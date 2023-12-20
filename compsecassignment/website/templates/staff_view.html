@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Staff View</h1>
+
+
+<a href="{% url 'account_logout' %}">Logout</a>
+
+
+{% for request in req_list %}
+<section>
+    <h3>Name: {{request.user.first_name | title}} {{request.user.last_name | title}}</h3>
+    <p>Description: {{request.description}}</p>
+    <p>Contact method: {{request.contact_method | title}}</p>
+    <p>Email: {{request.user.email}}</p>
+    <p>Phone Number: {{request.user.phone_number}}</p>
+    <p> <img src="{{request.image.url}}" height="400"/></p>
+</section>
+{% empty %}
+<p>No requests available</p>
+{% endfor %}
+
+{% endblock %}

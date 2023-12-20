@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1> Lovejoy’s Antiques </h1>
+<ul>
+
+  {% if user.is_authenticated %}
+  <p>Welcome {{ user.username }} !!!</p>
+  <a href="{% url 'account_logout' %}">Logout</a>
+  <li><a href="{% url 'request_view' %}">Request View</a></li>
+  <li><a href="{% url 'staff_view' %}">Staff View</a></li>
+
+  {% else %}
+  <p>Please login or sign up to access other parts of the site</p>
+
+  <li><a href="{% url 'account_login' %}">Login</a></li>
+  <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+
+  {% endif %}
+  
+  
+
+
+
+
+</ul>
+
+{% endblock %}
